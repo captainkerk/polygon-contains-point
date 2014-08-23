@@ -5,6 +5,11 @@ polygon-contains-point
 The point-in-polygon (PIP) problem asks whether a given point in the plane lies inside, outside, or on the boundary of a polygon.
 Wiki reference: [Point in polygon](http://en.wikipedia.org/wiki/Point_in_polygon)
 
+## Note:
+This fork of sromku's master has been modified to support the use of doubles instead of floats.
+The intention here is to promote the use of non-integer units, such as coordinates.
+
+
 ## Algorithm
 The number of intersections for a ray passing from the exterior of the polygon to any point; if odd, it shows that the point lies inside the polygon. If it is even, the point lies outside the polygon.
 
