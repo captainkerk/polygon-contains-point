@@ -6,7 +6,7 @@ The point-in-polygon (PIP) problem asks whether a given point in the plane lies 
 Wiki reference: [Point in polygon](http://en.wikipedia.org/wiki/Point_in_polygon)
 
 ## Note:
-This fork of sromku's master has been modified to support the use of doubles instead of floats.
+This fork of sromku's polygon-contains-point has been modified to support the use of doubles instead of floats.
 The intention here is to promote the use of non-integer units, such as coordinates.
 
 
