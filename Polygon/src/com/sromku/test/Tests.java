@@ -1,7 +1,7 @@
 package com.sromku.test;
 
-import com.sromku.polygon.Point;
-import com.sromku.polygon.Polygon;
+import me.kerkstra.polygon.Point;
+import me.kerkstra.polygon.Polygon;
 
 public class Tests
 {

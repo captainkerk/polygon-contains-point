@@ -1,16 +1,23 @@
-package com.sromku.polygon;
+package me.kerkstra.polygon;
+
 
 /**
  * Line is defined by starting point and ending point on 2D dimension.<br>
  * 
  * @author Roman Kushnarenko (sromku@gmail.com)
+ * Modified by: John Kerkstra (john@kerkstra.me)
+ * 
+ * The 'Point-in-Polygon' algorithm has been modified to use doubles. 
+ * This will allow for non-integer units, such as coordinates, to be used more easily with the same accuracy.
+ * 
  */
+
 public class Line
 {
 	private final Point _start;
 	private final Point _end;
-	private float _a = Float.NaN;
-	private float _b = Float.NaN;
+	private double _a = 0;
+ 	private double _b = 0;
 	private boolean _vertical = false;
 
 	public Line(Point start, Point end)
@@ -39,10 +46,10 @@ public class Line
 	 */
 	public boolean isInside(Point point)
 	{
-		float maxX = _start.x > _end.x ? _start.x : _end.x;
-		float minX = _start.x < _end.x ? _start.x : _end.x;
-		float maxY = _start.y > _end.y ? _start.y : _end.y;
-		float minY = _start.y < _end.y ? _start.y : _end.y;
+		double maxX = _start.x > _end.x ? _start.x : _end.x;
+		double minX = _start.x < _end.x ? _start.x : _end.x;
+		double maxY = _start.y > _end.y ? _start.y : _end.y;
+		double minY = _start.y < _end.y ? _start.y : _end.y;
 
 		if ((point.x >= minX && point.x <= maxX) && (point.y >= minY && point.y <= maxY))
 		{
@@ -68,7 +75,7 @@ public class Line
 	 * 
 	 * @return The <b>A</b>
 	 */
-	public float getA()
+	public double getA()
 	{
 		return _a;
 	}
@@ -78,7 +85,7 @@ public class Line
 	 * 
 	 * @return The <b>B</b>
 	 */
-	public float getB()
+	public double getB()
 	{
 		return _b;
 	}

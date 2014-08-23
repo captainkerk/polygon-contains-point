@@ -1,4 +1,4 @@
-package com.sromku.polygon;
+package me.kerkstra.polygon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,12 @@ import java.util.List;
  * 
  * @see {@link Builder}
  * @author Roman Kushnarenko (sromku@gmail.com)
+ * Modified by: John Kerkstra (john@kerkstra.me)
+ * 
+ * The 'Point-in-Polygon' algorithm has been modified to use doubles. 
+ * This will allow for non-integer units, such as coordinates, to be used more easily with the same accuracy.
+ * 
+ * 
  */
 public class Polygon
 {
@@ -217,22 +223,22 @@ public class Polygon
 				return false;
 			}
 
-			float x = ((side.getB() - ray.getB()) / (ray.getA() - side.getA())); // x = (b2-b1)/(a1-a2)
-			float y = side.getA() * x + side.getB(); // y = a2*x+b2
+			double x = ((side.getB() - ray.getB()) / (ray.getA() - side.getA())); // x = (b2-b1)/(a1-a2)
+			double y = side.getA() * x + side.getB(); // y = a2*x+b2
 			intersectPoint = new Point(x, y);
 		}
 
 		else if (ray.isVertical() && !side.isVertical())
 		{
-			float x = ray.getStart().x;
-			float y = side.getA() * x + side.getB();
+			double x = ray.getStart().x;
+			double y = side.getA() * x + side.getB();
 			intersectPoint = new Point(x, y);
 		}
 
 		else if (!ray.isVertical() && side.isVertical())
 		{
-			float x = side.getStart().x;
-			float y = ray.getA() * x + ray.getB();
+			double x = side.getStart().x;
+			double y = ray.getA() * x + ray.getB();
 			intersectPoint = new Point(x, y);
 		}
 
@@ -262,7 +268,7 @@ public class Polygon
 	private Line createRay(Point point)
 	{
 		// create outside point
-		float epsilon = (_boundingBox.xMax - _boundingBox.xMin) / 100f;
+		double epsilon = (_boundingBox.xMax - _boundingBox.xMin) / 100f;
 		Point outsidePoint = new Point(_boundingBox.xMin - epsilon, _boundingBox.yMin);
 
 		Line vector = new Line(outsidePoint, point);
@@ -286,9 +292,9 @@ public class Polygon
 
 	private static class BoundingBox
 	{
-		public float xMax = Float.NEGATIVE_INFINITY;
-		public float xMin = Float.NEGATIVE_INFINITY;
-		public float yMax = Float.NEGATIVE_INFINITY;
-		public float yMin = Float.NEGATIVE_INFINITY;
+		public double xMax = 0;
+		public double xMin = 0;
+		public double yMax = 0;
+		public double yMin = 0;
 	}
 }
