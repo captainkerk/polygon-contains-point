@@ -8,7 +8,7 @@ Wiki reference: [Point in polygon](http://en.wikipedia.org/wiki/Point_in_polygon
 ## Note:
 This fork of sromku's polygon-contains-point has been modified to support the use of doubles instead of floats.
 The intention here is to promote the use of non-integer units, such as coordinates.
-Thanks Roman Kushnarenko!
+
 
 
 ## Algorithm
@@ -39,9 +39,9 @@ First build all the border sides of the polygon. Close the borders and then you 
 You can add multiple number of holes, just remember to `close()` after each added hole. 
 ``` java
 Polygon polygon = Polygon.Builder()
-        .addVertex(new Point(1, 2)) // polygon
-        .addVertex(new Point(1, 6))
-        .addVertex(new Point(8, 7))
+        .addVertex(new Point(1.2, 2)) // polygon
+        .addVertex(new Point(1.6346, 6))
+        .addVertex(new Point(8.12, 7))
         .addVertex(new Point(8, 1))
         .close() 
         .addVertex(new Point(2, 3)) // hole one
@@ -59,7 +59,7 @@ Polygon polygon = Polygon.Builder()
 ### Check if the point inside
 
 ``` java
-Point point = new Point(4.5f, 7);
+Point point = new Point(4.5, 7);
 boolean contains = polygon.contains(point);
 ```
 
@@ -68,8 +68,6 @@ boolean contains = polygon.contains(point);
 Two main tests are attached (not in junit format). Both tests cover polygons with holes and without.
 
 ## License
-
-    Copyright 2013-present Roman Kushnarenko
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -82,5 +80,3 @@ Two main tests are attached (not in junit format). Both tests cover polygons wit
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/sromku/polygon-contains-point/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
